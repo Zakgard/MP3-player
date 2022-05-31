@@ -1,22 +1,37 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace MP3_player_2
 {
     public partial class Form1 : Form
     {
         private string _filePath = string.Empty;
+        private string _filePathForPlaylist = string.Empty;
         private string _durationString= string.Empty;
-       
+        List<string> playListFilePath= new List<string>();
+
+        private int _playListCount=0;
+        
         private int _seconds;
         private int _minutes;
         private int _hours;
         private int _secondsDuration;
         private int _minutesDuration;
         private int _hoursDuration;
+        private int _currentSongIndex=0;
+
+        private double _doubleSecondDuretion;
 
         private bool _isMediaPlaying = false;
-        
+
+        OpenFileDialog openFileDialog = new OpenFileDialog()
+        {
+            Filter = "Все файлы|*",
+            Multiselect = false,
+            ValidateNames = true,
+        };
+
         WMPLib.WindowsMediaPlayer mediaPlayer = new WMPLib.WindowsMediaPlayer();
         
         public Form1()
@@ -55,14 +70,15 @@ namespace MP3_player_2
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                Filter = "Все файлы|*",
-                Multiselect = false,
-                ValidateNames = true,
-            };
+            
             if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
                 _filePath = openFileDialog.FileName;
+                playListFilePath.Add(_filePath);
+                comboBox1.Items.Add(_filePath);
+            }
+                
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -99,6 +115,8 @@ namespace MP3_player_2
             }
             else
                 label6.Text = "0:00:00";
+            
+            
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
@@ -113,6 +131,7 @@ namespace MP3_player_2
         }
         private string GetMediaDuration()
         {
+            _doubleSecondDuretion=mediaPlayer.currentMedia.duration;
             _secondsDuration = Convert.ToInt32(mediaPlayer.currentMedia.duration);
             _hoursDuration = _secondsDuration / 3600;
             _minutesDuration = (_secondsDuration - _hoursDuration / 3600) / 60;
@@ -125,6 +144,72 @@ namespace MP3_player_2
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void добавитьВПлейлистToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                _filePathForPlaylist = openFileDialog.FileName;
+                playListFilePath.Add(_filePathForPlaylist);
+                comboBox1.Items.Add(_filePathForPlaylist);
+            }
+                
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (_playListCount+1 <= playListFilePath.Count-1)
+            {                               
+                mediaPlayer.URL = playListFilePath[_playListCount+1];
+                textBox1.Text = mediaPlayer.URL;
+                _playListCount++;
+                textBox2.Text = $"{_playListCount}";
+            }
+            else
+            {
+                MessageBox.Show("Вы не добавили следующую песню!");
+                
+            }
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (_playListCount - 1 < 0)
+            {
+                MessageBox.Show("Это первая песня вашего плейлиста!");
+                
+            }
+            else
+            {
+                mediaPlayer.URL = playListFilePath[_playListCount-1];
+                textBox1.Text = mediaPlayer.URL;
+                _playListCount--;
+                textBox2.Text = $"{_playListCount}";
+            }
+        }
+
+        private void label6_TextChanged(object sender, EventArgs e)
+        {
+            if (label6.Text == label4.Text)
+            {
+                
+                if (_playListCount + 1 <= playListFilePath.Count - 1)
+                {
+
+                    mediaPlayer.URL = playListFilePath[_playListCount + 1];
+                    textBox1.Text = mediaPlayer.URL;
+                    _playListCount++;
+                    textBox2.Text = $"{_playListCount}";
+                }
+                else
+                {
+                    MessageBox.Show("Конец плейлиста!");
+                }
+
+                
+            }
         }
     }
 }
