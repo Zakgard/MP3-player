@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MP3_player_2
@@ -13,21 +6,23 @@ namespace MP3_player_2
     public partial class Form1 : Form
     {
         private string _filePath = string.Empty;
-        private int seconds;
-        private int minutes;
-        private int hours;
+        private string _durationString= string.Empty;
+       
+        private int _seconds;
+        private int _minutes;
+        private int _hours;
+        private int _secondsDuration;
+        private int _minutesDuration;
+        private int _hoursDuration;
+
         private bool _isMediaPlaying = false;
+        
         WMPLib.WindowsMediaPlayer mediaPlayer = new WMPLib.WindowsMediaPlayer();
         
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        }       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,23 +33,24 @@ namespace MP3_player_2
         {
             if (!_isMediaPlaying)
             {
-                 try
-                 {
+                try
+                {
                     mediaPlayer.URL = _filePath;
                     mediaPlayer.controls.play();
                     textBox1.Text = _filePath;
                     _isMediaPlaying = true;
-                    trackBar2.Maximum = Convert.ToInt32(mediaPlayer.currentMedia.duration);
+                    timer1.Start();
                     
-                 }
-                 catch (Exception ex)
-                 {
-                     MessageBox.Show(ex.Message, "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             if (_isMediaPlaying)
                 mediaPlayer.controls.play();
-            
+                timer1.Start();
+
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,6 +68,7 @@ namespace MP3_player_2
         private void button2_Click(object sender, EventArgs e)
         {
             mediaPlayer.controls.pause();
+            timer1.Stop();
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -81,19 +78,24 @@ namespace MP3_player_2
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
+            
             mediaPlayer.controls.currentPosition = trackBar2.Value;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {            
+        {
+            
+            trackBar2.Maximum = (int) mediaPlayer.currentMedia.duration;
+            label4.Text = GetMediaDuration();
             trackBar2.Value=Convert.ToInt32(mediaPlayer.controls.currentPosition);
             if (mediaPlayer != null)
             {
-                seconds = Convert.ToInt32(mediaPlayer.controls.currentPosition);
-                hours = seconds / 3600;
-                minutes = (seconds - hours / 3600) / 60;
-                seconds = seconds % 60;
-                label6.Text = String.Format("{0:D}:{1:D2}:{2:D2}", hours, minutes, seconds);
+                _seconds = Convert.ToInt32(mediaPlayer.controls.currentPosition);
+                _hours = _seconds / 3600;
+                _minutes = (_seconds - _hours / 3600) / 60;
+                _seconds = _seconds % 60;
+                label6.Text = String.Format("{0:D}:{1:D2}:{2:D2}", _hours, _minutes, _seconds);
+                
             }
             else
                 label6.Text = "0:00:00";
@@ -109,7 +111,20 @@ namespace MP3_player_2
         {
             mediaPlayer.settings.volume = trackBar1.Value;
         }
+        private string GetMediaDuration()
+        {
+            _secondsDuration = Convert.ToInt32(mediaPlayer.currentMedia.duration);
+            _hoursDuration = _secondsDuration / 3600;
+            _minutesDuration = (_secondsDuration - _hoursDuration / 3600) / 60;
+            _secondsDuration = _secondsDuration % 60;
+            _durationString = String.Format("{0:D}:{1:D2}:{2:D2}", _hoursDuration, _minutesDuration, _secondsDuration);
+            
+            return _durationString;
+        }
 
-      
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
