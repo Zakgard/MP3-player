@@ -11,23 +11,19 @@ namespace MP3_player_2
         private string _durationString= string.Empty;
         List<string> playListFilePath= new List<string>();
 
-        private int _playListCount=0;
-        
+        private int _playListCount=0;        
         private int _seconds;
         private int _minutes;
         private int _hours;
         private int _secondsDuration;
         private int _minutesDuration;
         private int _hoursDuration;
-        private int _currentSongIndex=0;
-
-        private double _doubleSecondDuretion;
-
+        
         private bool _isMediaPlaying = false;
 
         OpenFileDialog openFileDialog = new OpenFileDialog()
         {
-            Filter = "Все файлы|*",
+            Filter = ".mp3|*",
             Multiselect = false,
             ValidateNames = true,
         };
@@ -87,11 +83,6 @@ namespace MP3_player_2
             timer1.Stop();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             
@@ -131,7 +122,7 @@ namespace MP3_player_2
         }
         private string GetMediaDuration()
         {
-            _doubleSecondDuretion=mediaPlayer.currentMedia.duration;
+            
             _secondsDuration = Convert.ToInt32(mediaPlayer.currentMedia.duration);
             _hoursDuration = _secondsDuration / 3600;
             _minutesDuration = (_secondsDuration - _hoursDuration / 3600) / 60;
@@ -192,7 +183,7 @@ namespace MP3_player_2
 
         private void label6_TextChanged(object sender, EventArgs e)
         {
-            if (label6.Text == label4.Text)
+            if (label6.Text == label4.Text && label4.Text!="0:00:00")
             {
                 
                 if (_playListCount + 1 <= playListFilePath.Count - 1)

@@ -64,11 +64,12 @@
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(698, 390);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(417, 264);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(408, 197);
             this.axWindowsMediaPlayer1.TabIndex = 0;
+            this.axWindowsMediaPlayer1.Visible = false;
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer1_PlayStateChange);
             // 
             // menuStrip1
@@ -77,7 +78,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(792, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(825, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,48 +108,52 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Window;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(12, 69);
+            this.button1.Location = new System.Drawing.Point(11, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 51);
             this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.Window;
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(105, 69);
+            this.button2.Location = new System.Drawing.Point(104, 96);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(57, 51);
             this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Location = new System.Drawing.Point(116, 159);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(253, 20);
+            this.textBox1.Size = new System.Drawing.Size(285, 20);
             this.textBox1.TabIndex = 4;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(475, 37);
+            this.trackBar1.BackColor = System.Drawing.SystemColors.Window;
+            this.trackBar1.Location = new System.Drawing.Point(511, 30);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(302, 45);
             this.trackBar1.TabIndex = 5;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(475, 134);
+            this.trackBar2.BackColor = System.Drawing.SystemColors.Window;
+            this.trackBar2.Location = new System.Drawing.Point(511, 127);
             this.trackBar2.Maximum = 1000;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -160,7 +165,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(379, 37);
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(441, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 7;
@@ -169,7 +175,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(379, 134);
+            this.label2.BackColor = System.Drawing.SystemColors.Window;
+            this.label2.Location = new System.Drawing.Point(441, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 8;
@@ -178,7 +185,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(472, 182);
+            this.label3.BackColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(508, 175);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 9;
@@ -187,7 +195,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(742, 182);
+            this.label4.BackColor = System.Drawing.SystemColors.Window;
+            this.label4.Location = new System.Drawing.Point(778, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 10;
@@ -196,6 +205,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Window;
             this.label5.Location = new System.Drawing.Point(12, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
@@ -209,6 +219,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Window;
             this.label6.Location = new System.Drawing.Point(160, 215);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
@@ -219,6 +230,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.Window;
             this.label7.Location = new System.Drawing.Point(12, 215);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(119, 13);
@@ -227,30 +239,33 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.Window;
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.Location = new System.Drawing.Point(12, 264);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(69, 67);
             this.button3.TabIndex = 14;
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.SystemColors.Window;
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(262, 69);
+            this.button4.Location = new System.Drawing.Point(263, 96);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 51);
             this.button4.TabIndex = 15;
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(212, 13);
+            this.comboBox1.Location = new System.Drawing.Point(82, 29);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 16;
@@ -258,7 +273,8 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(147, 13);
+            this.label8.BackColor = System.Drawing.SystemColors.Window;
+            this.label8.Location = new System.Drawing.Point(9, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 17;
@@ -266,17 +282,19 @@
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.SystemColors.Window;
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(183, 69);
+            this.button5.Location = new System.Drawing.Point(182, 96);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(56, 51);
             this.button5.TabIndex = 18;
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
             this.textBox2.Location = new System.Drawing.Point(235, 261);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -286,6 +304,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.Window;
             this.label9.Location = new System.Drawing.Point(87, 264);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 13);
@@ -296,7 +315,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 341);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(825, 459);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button5);
@@ -320,7 +341,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Giga MP3-player";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
